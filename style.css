@@ -1,0 +1,69 @@
+body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #121212;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+table {
+            border: none;
+            background: #1e1e1e;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 0 10px #000;
+        }
+
+input[type="text"] {
+            width: 100%;
+            font-size: 2rem;
+            padding: 10px;
+            text-align: right;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            background: #000;
+            color: #0f0;
+        }
+
+td {
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            font-size: 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            user-select: none;
+        }
+
+.digitButton {
+            background: #333;
+            color: white;
+        }
+
+        .operatorButton {
+            background: #f39c12;
+            color: white;
+        }
+
+        .ACButton {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .digitButton:hover, .operatorButton:hover, .ACButton:hover {
+            filter: brightness(1.2);
+        }
+
+        .operatorButton:active, .digitButton:active, .ACButton:active {
+            transform: scale(0.95);
+        }
+
+        #soundToggle {
+            margin-top: 15px;
+            color: #ccc;
+            text-align: center;
+        }

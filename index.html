@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <table>
+            <tr>
+                <td colspan="4">
+                    <input type="text" id="inputBox" value="0" disabled />
+                </td>
+            </tr>
+            <tr>
+                <td class="digitButton" onclick="digitBtnPressed('7')">7</td>
+                <td class="digitButton" onclick="digitBtnPressed('8')">8</td>
+                <td class="digitButton" onclick="digitBtnPressed('9')">9</td>
+                <td class="operatorButton" onclick="operatorBtnPressed('*')">×</td>
+            </tr>
+            <tr>
+                <td class="digitButton" onclick="digitBtnPressed('4')">4</td>
+                <td class="digitButton" onclick="digitBtnPressed('5')">5</td>
+                <td class="digitButton" onclick="digitBtnPressed('6')">6</td>
+                <td class="operatorButton" onclick="operatorBtnPressed('-')">−</td>
+            </tr>
+            <tr>
+                <td class="digitButton" onclick="digitBtnPressed('1')">1</td>
+                <td class="digitButton" onclick="digitBtnPressed('2')">2</td>
+                <td class="digitButton" onclick="digitBtnPressed('3')">3</td>
+                <td class="operatorButton" onclick="operatorBtnPressed('+')">+</td>
+            </tr>
+            <tr>
+                <td class="digitButton" colspan="2" onclick="digitBtnPressed('0')">0</td>
+                <td class="digitButton" onclick="digitBtnPressed('.')">.</td>
+                <td class="operatorButton" onclick="operatorBtnPressed('/')">÷</td>
+            </tr>
+            <tr>
+                <td class="ACButton" colspan="2" onclick="btnACPressed()">AC</td>
+                <td class="operatorButton" colspan="2" onclick="equalsBtnPressed()">=</td>
+            </tr>
+        </table>
+        <div id="soundToggle">
+            🔊 <label><input type="checkbox" id="soundOn" checked /> Click Sound</label>
+        </div>
+    </div>
+
+    <script>
+        let expression = '';
+        const inputBox = document.getElementById("inputBox");
+
+        function playClickSound() {
+            if (!document.getElementById("soundOn").checked) return;
+            const beep = new Audio("https://www.soundjay.com/buttons/sounds/button-16.mp3");
+            beep.play();
+        }
+
+        function digitBtnPressed(value) {
+            playClickSound();
+            if (inputBox.value === '0' || inputBox.value === 'Error') {
+                inputBox.value = value;
+            } else {
+                inputBox.value += value;
+            }
+            expression = inputBox.value;
+        }
+
+        function operatorBtnPressed(operator) {
+            playClickSound();
+            inputBox.value += operator;
+            expression = inputBox.value;
+        }
+
+        function btnACPressed() {
+            playClickSound();
+            expression = '';
+            inputBox.value = '0';
+        }
+
+        function equalsBtnPressed() {
+            playClickSound();
+            try {
+                let result = eval(expression);
+                inputBox.value = result;
+                expression = result;
+            } catch {
+                inputBox.value = "Error";
+                expression = '';
+            }
+        }
+    </script>
+</body>
+</html>
